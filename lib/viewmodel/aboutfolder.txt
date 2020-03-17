@@ -1,0 +1,6 @@
+//************* THE CODE IN THIS FOLDER ALL BUSINESS LOGIC FOR THE UI *************
+So, there's no need of writing your BUSINESS login in the widget tree,
+This BUSINESS logic also support Provider state Management, Am using provider throughout,
+You can use any state Management you are profiicent with.
+
+THANKS, 
