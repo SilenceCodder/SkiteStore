@@ -2,56 +2,99 @@ import 'package:flutter/material.dart';
 import 'package:skitestore/model/ProductModel.dart';
 import 'package:skitestore/model/data.dart';
 import 'package:skitestore/styles/AppColor.dart';
+import 'package:skitestore/styles/AppImage.dart';
 import 'package:skitestore/styles/AppTextStyle.dart';
 
-class WishList extends StatefulWidget {
-     final AnimationController mainScreenAnimationController;
-
-  const WishList({Key key, this.mainScreenAnimationController}) : super(key: key);
+class CartListScreen extends StatefulWidget {
+  
 
   @override
-  _WishListState createState() => _WishListState();
+  _CartListScreenState createState() => _CartListScreenState();
 }
 
-class _WishListState extends State<WishList> with TickerProviderStateMixin{
-  AnimationController animationController;
+class _CartListScreenState extends State<CartListScreen> with TickerProviderStateMixin{
+  AnimationController animationController, mainScreenAnimationController;
    List<ProductModel> carts = cartList();
+
 
  @override
   void initState() {
     animationController = AnimationController(duration: Duration(milliseconds: 2000), vsync: this);
+     mainScreenAnimationController = AnimationController(duration: Duration(milliseconds: 600), vsync: this);
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: AnimatedBuilder(
-          animation: widget.mainScreenAnimationController,
-          builder: (BuildContext context, Widget child) {
-            return FadeTransition(
-              opacity: Tween(begin: 0.0, end: 1.0).animate(
-                  CurvedAnimation(
-                      parent: widget.mainScreenAnimationController,
-                      curve: Interval((1 / 1) * 2, 1.0,
-                          curve: Curves.fastOutSlowIn))),
-              child: new Transform(
-                transform: new Matrix4.translationValues(
-                    0.0, 30 * (1.0 - Tween(begin: 0.0, end: 1.0).animate(
-                    CurvedAnimation(
-                        parent: widget.mainScreenAnimationController,
-                        curve: Interval((1 / 1) * 2, 1.0,
-                            curve: Curves.fastOutSlowIn))).value), 0.0),
-                child: view(),
-              ),
-            );
-          },
-        ),
+     body: Column(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: <Widget>[
+        Text('SubTotal', style: AppTextStyle.subheader3Bold(context, Colors.black),),
+     ],),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+            ListTile(title: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('SubTotal', style: AppTextStyle.subheader3Bold(context, Colors.black),),
+                SizedBox(height: 15,),
+                Text('SubTotal', style: AppTextStyle.subheader3Bold(context, Colors.black),)
+              ],
+            ),
+              trailing: Column(
+              children: <Widget>[
+                Text('N50,000', style: AppTextStyle.subheader3Bold(context, Colors.black),),
+                SizedBox(height: 15,),
+                Text('N50,000', style: AppTextStyle.subheader3Bold(context, Colors.black),)
+              ],
+            )
+            ),        
+             SizedBox(height: 10,),     
+               Material(
+                                        shadowColor: AppColor.darkrimary,
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                        elevation: 20,
+                                          child: Container(
+                                          height: 40,
+                                          width: 150,
+                                           decoration: BoxDecoration(
+                                            color: AppColor.p,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(16.0),
+                                            ),
+                                            boxShadow: <BoxShadow>[
+                                              BoxShadow(color: AppColor.primaryDarkColord.withOpacity(0.5),
+                                                  offset: Offset(1.1, 1.1),
+                                                  blurRadius: 10.0),
+                                            ],
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "Checkout",
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18,
+                                                letterSpacing: 0.0,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+          ],)
+         ) 
+    
     );
   }
 
   view(){
-   return  ListView.builder(
+   return ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount:carts.length,

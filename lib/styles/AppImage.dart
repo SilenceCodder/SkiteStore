@@ -18,5 +18,9 @@ class AppImage{
       static const String watch6 = "assets/watch/watch6.png";
       static const String watch7 = "assets/watch/watch7.png";
       static const String watch8 = "assets/watch/watch8.png";
+
+
+       //******Shoes */
+  static const String shoe1 = "assets/shoes/adidas.png";
   
 }

@@ -3,20 +3,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skitestore/screens/Tabs/CartListScreen.dart';
-import 'package:skitestore/screens/Tabs/Cartegories.dart';
-import 'package:skitestore/screens/Tabs/DashboardScreen.dart';
-import 'package:skitestore/screens/Tabs/ProfileScreen.dart';
 import 'package:skitestore/screens/Tabs/WishList.dart';
 import 'package:skitestore/styles/AppColor.dart';
 import 'package:skitestore/styles/AppTextStyle.dart';
-import 'package:skitestore/util/kf_drawer.dart';
 
-class MainDashboard extends KFDrawerContent {
+class TestDashboard extends StatefulWidget {
   @override
-  _MainDashboardState createState() => _MainDashboardState();
+  _TestDashboardState createState() => _TestDashboardState();
 }
 
-class _MainDashboardState extends State<MainDashboard> with TickerProviderStateMixin  {
+class _TestDashboardState extends State<TestDashboard> with TickerProviderStateMixin  {
 
      var _scaffoldKey = new GlobalKey<ScaffoldState>();
       int _selectedIndex = 0;
@@ -56,7 +52,7 @@ class _MainDashboardState extends State<MainDashboard> with TickerProviderStateM
               color: Colors.white,
               size: 28,
             ),
-            onPressed: widget.onMenuPressed,
+           
           ),
           actions: <Widget>[
             Padding(
@@ -110,29 +106,12 @@ class _MainDashboardState extends State<MainDashboard> with TickerProviderStateM
                 ),
               ),
 
-              //Section
-              BottomNavigationBarItem(
-                icon: Icon(
-                  FontAwesomeIcons.heart,
-                  color: Colors.white,),
-                title: new Text("WishList",
-                  style: AppTextStyle.subHeader2(context, Colors.white)
-                ),
-
-              ),
-
-                    //Profile.
-              BottomNavigationBarItem(
-                icon: Icon(
-                  FontAwesomeIcons.userAlt, color: Colors.white,), 
-                title: new Text("Profile",
-                  style: AppTextStyle.subHeader2(context, Colors.white)
-                ),
-              ),
+             
               
             ]
 
         ),
+    
     );
   }
 
@@ -140,35 +119,18 @@ class _MainDashboardState extends State<MainDashboard> with TickerProviderStateM
 //    Main.
     if(_selectedIndex == 0){
 
-      return DashboardScreen(animationController: animationController,);
-    // return CartListScreen(mainScreenAnimationController: animationController,);
+     // return DashboardScreen(animationController: animationController,);
+     return WishList(mainScreenAnimationController: animationController,);
 
-//Categories
-       }else if(_selectedIndex == 1){
-      return Catergories(animationController: animationController,);
-     
-//Cart.
-    }else if(_selectedIndex == 2){
+  }else if(_selectedIndex == 1){
       Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) =>  CartListScreen()
-                            ),
-                          );
-     
-      
-//WishList.
-    }else if(_selectedIndex == 3){
-
-       return WishList(mainScreenAnimationController: animationController,);
-
-//Profile
-    }else if(_selectedIndex == 4){
-
-      return ProfileScreen(animationController: animationController,); 
-      
-    }
+        context,
+        MaterialPageRoute(builder: (context) =>  
+        CartListScreen()
+        ),);
   }
-
+   }
+   
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

@@ -5,17 +5,21 @@ import 'package:skitestore/locator.dart';
 import 'package:skitestore/managers/dialog_manager.dart';
 import 'package:skitestore/router.dart';
 import 'package:skitestore/screens/OnboardScreen.dart';
+import 'package:skitestore/screens/Tabs/CartListScreen.dart';
+import 'package:skitestore/screens/TestDashboard.dart';
 import 'package:skitestore/screens/ProductTAB/ListofProductsTabs.dart';
 import 'package:skitestore/screens/RegisterScreen.dart';
 import 'package:skitestore/screens/SingleProduct.dart';
 import 'package:skitestore/styles/AppText.dart';
 import 'package:skitestore/widgets/MyKFmainWidget.dart';
 
+
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
    @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class MyApp extends StatelessWidget {
             builder: (context) => DialogManager(child: child)),
       ),
       navigatorKey: locator<NavigationService>().navigationKey,
-      home: MyKFmainWidget(), //
+      home: OnboardScreen(),//CartListScreen(),//MyKFmainWidget(), //TestDashboard(),//
       onGenerateRoute: generateRoute,
     );
 }

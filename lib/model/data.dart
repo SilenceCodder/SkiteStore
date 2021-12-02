@@ -52,3 +52,15 @@ ProductModel(image: AppImage.watch8, name: 'Watch 8', desc: 'This is a watch mad
 
 return lProductsList;
 }
+
+//********* CartList Produst */
+List<ProductModel> cartList(){
+List<ProductModel> lProductsList =  [
+ProductModel(image: AppImage.shoe1, name: 'Watch 1', desc: 'This is a watch made from Nigerian, 9ice watch Ever', like: true, status: true, price: 'N10,000', rate: '4.0'),
+ProductModel(image: AppImage.splash1, name: 'App', desc: 'This is a worldwide E-commerce App for all Shops', like: true, status: true, price: 'N10,000', rate: '4.0'),
+ProductModel(image: AppImage.watch2, name: 'Watch 2', desc: 'This is a watch made from Nigerian, 9ice watch Ever', like: false, status: true, price: 'N5,000', rate: '1.0'),
+
+];
+
+return lProductsList;
+}
