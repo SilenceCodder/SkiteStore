@@ -8,6 +8,9 @@
 
 ## 📸 Video
 
+https://user-images.githubusercontent.com/34744075/144390910-25129eda-a27f-4d16-be87-f06fff5aace5.mp4
+
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 An E-Commerce App for everyone
